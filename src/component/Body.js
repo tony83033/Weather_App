@@ -1,17 +1,24 @@
 import React from 'react'
-
+import { useContext } from 'react'
+import weatherContext from '../context/WeatherContext'
 const Body = () => {
+
+
+    const  context = useContext(weatherContext);
+    const {data} = context;
+    console.log(data);
+
     return (
         <>
             <div className='container mt-4'>
             <div className="card-deck mb-3 text-center">
   <div className="card mb-4 box-shadow">
     <div className="card-header">
-      <h4 className="my-0 font-weight-normal">Free</h4>
+      <h4 className="my-0 font-weight-normal">Temperature</h4>
     </div>
     <div className="card-body">
       <h1 className="card-title pricing-card-title">
-        $0 <small className="text-muted">/ mo</small>
+        {data.temp} <small className="text-muted"><span>&#8451;</span></small>
       </h1>
       <ul className="list-unstyled mt-3 mb-4">
         <li>10 users included</li>
@@ -29,11 +36,11 @@ const Body = () => {
   </div>
   <div className="card mb-4 box-shadow">
     <div className="card-header">
-      <h4 className="my-0 font-weight-normal">Pro</h4>
+      <h4 className="my-0 font-weight-normal">Humidity</h4>
     </div>
     <div className="card-body">
       <h1 className="card-title pricing-card-title">
-        $15 <small className="text-muted">/ mo</small>
+        {data.humidity}<small className="text-muted"></small>
       </h1>
       <ul className="list-unstyled mt-3 mb-4">
         <li>20 users included</li>
@@ -48,11 +55,11 @@ const Body = () => {
   </div>
   <div className="card mb-4 box-shadow">
     <div className="card-header">
-      <h4 className="my-0 font-weight-normal">Enterprise</h4>
+      <h4 className="my-0 font-weight-normal">Wind</h4>
     </div>
     <div className="card-body">
       <h1 className="card-title pricing-card-title">
-        $29 <small className="text-muted">/ mo</small>
+       {data.wind_speed}<small className="text-muted">/km</small>
       </h1>
       <ul className="list-unstyled mt-3 mb-4">
         <li>30 users included</li>

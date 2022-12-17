@@ -1,6 +1,28 @@
-import React from 'react'
-
+import React, { useState } from 'react'
+import { useContext } from 'react';
+import weatherContext from '../context/WeatherContext';
+import { useEffect } from 'react';
 const Navbar = () => {
+
+    const context = useContext(weatherContext);
+    const {getdata} = context;
+    const [city,setcity] = useState("");
+    const handleSubmit = (e)=>{
+        e.preventDefault();
+        console.log("I am here");
+        console.log("this is city",city);
+        getdata(city);
+    }
+
+    const handleChange = (e)=>{
+       
+            setcity(e.target.value);
+        
+    }
+
+    useEffect(()=>{
+        getdata("Kanpur");
+    },[])
   return (
     <>
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
@@ -66,12 +88,14 @@ const Navbar = () => {
         </a>
       </li>
     </ul>
-    <form className="form-inline my-2 my-lg-0">
+    <form className="form-inline my-2 my-lg-0" onSubmit={handleSubmit} >
       <input
         className="form-control mr-sm-2"
         type="search"
         placeholder="Search"
         aria-label="Search"
+        onChange={handleChange}
+        value={city}
       />
       <button className="btn btn-outline-success my-2 my-sm-0" type="submit">
         Search
