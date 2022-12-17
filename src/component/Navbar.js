@@ -49,7 +49,7 @@ const Navbar = () => {
       </li>
       <li className="nav-item">
         <a className="nav-link" href="#">
-          Link
+         About App
         </a>
       </li>
       <li className="nav-item dropdown">

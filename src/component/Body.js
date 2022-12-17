@@ -1,6 +1,8 @@
 import React from 'react'
 import { useContext } from 'react'
 import weatherContext from '../context/WeatherContext'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 const Body = (props) => {
 
 
@@ -9,10 +11,35 @@ const Body = (props) => {
     console.log(data);
     console.log( "this is test my city",mycity)
 
+    if(data.error){
+        toast.error(`Error ${data.error}`, {
+            position: "top-center",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "dark",
+            });
+    }
+
     return (
         <>
 
             <div className='container mt-4'>
+            <ToastContainer
+position="top-center"
+autoClose={5000}
+hideProgressBar={false}
+newestOnTop={false}
+closeOnClick
+rtl={false}
+pauseOnFocusLoss
+draggable
+pauseOnHover
+theme="light"
+/>
                 <div className='container mb-3'>
                         <h2 className='text-center'>
                     Weather For {mycity.charAt(0).toUpperCase()+mycity.slice(1)}</h2>
