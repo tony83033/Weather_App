@@ -1,16 +1,22 @@
 import React from 'react'
 import { useContext } from 'react'
 import weatherContext from '../context/WeatherContext'
-const Body = () => {
+const Body = (props) => {
 
 
     const  context = useContext(weatherContext);
-    const {data} = context;
+    const {data,mycity} = context;
     console.log(data);
+    console.log( "this is test my city",mycity)
 
     return (
         <>
+
             <div className='container mt-4'>
+                <div className='container mb-3'>
+                        <h2 className='text-center'>
+                    Weather For {mycity.charAt(0).toUpperCase()+mycity.slice(1)}</h2>
+                </div>
             <div className="card-deck mb-3 text-center">
   <div className="card mb-4 box-shadow">
     <div className="card-header">
@@ -21,16 +27,16 @@ const Body = () => {
         {data.temp} <small className="text-muted"><span>&#8451;</span></small>
       </h1>
       <ul className="list-unstyled mt-3 mb-4">
-        <li>10 users included</li>
-        <li>2 GB of storage</li>
-        <li>Email support</li>
-        <li>Help center access</li>
+        <li>Min_temp  = {data.min_temp}</li>
+        <li>Max_temp" = {data.max_temp}</li>
+        <li>Cloud_pct = {data.cloud_pct}</li>
+        
       </ul>
       <button
         type="button"
         className="btn btn-lg btn-block btn-outline-primary"
       >
-        Sign up for free
+       Temperature
       </button>
     </div>
   </div>
@@ -43,13 +49,13 @@ const Body = () => {
         {data.humidity}<small className="text-muted"></small>
       </h1>
       <ul className="list-unstyled mt-3 mb-4">
-        <li>20 users included</li>
-        <li>10 GB of storage</li>
+        <li>Sunset = {data.sunset}</li>
+        <li>Sunrise = {data.sunrise}</li>
         <li>Priority email support</li>
-        <li>Help center access</li>
+      
       </ul>
       <button type="button" className="btn btn-lg btn-block btn-primary">
-        Get started
+      Humidity
       </button>
     </div>
   </div>
@@ -62,13 +68,13 @@ const Body = () => {
        {data.wind_speed}<small className="text-muted">/km</small>
       </h1>
       <ul className="list-unstyled mt-3 mb-4">
-        <li>30 users included</li>
-        <li>15 GB of storage</li>
-        <li>Phone and email support</li>
-        <li>Help center access</li>
+        <li>Wind_speed = {data.wind_speed}</li>
+        <li>wind_degrees = {data.wind_degrees}</li>
+        <li>Feels_like = {data.feels_like}</li>
+        
       </ul>
       <button type="button" className="btn btn-lg btn-block btn-primary">
-        Contact us
+      Wind
       </button>
     </div>
   </div>

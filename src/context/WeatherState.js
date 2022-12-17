@@ -5,9 +5,11 @@ const WeatherState = (props) => {
     const host ="https://weather-by-api-ninjas.p.rapidapi.com/v1/weather?city=";
 
     const [data,setdata] = useState({data:"demodata"});
-    
+    const [mycity,setcity] = useState("Kanpur")
+   
     const getdata = async (city) =>{
-        console.log("This is host",host)
+       
+       setcity(city);
         const responce = await fetch(`${host}${city}`, {
             method: 'GET',
             headers: {
@@ -21,7 +23,7 @@ const WeatherState = (props) => {
     }
 
   return (
-    <weatherContext.Provider value={{data,getdata}}>
+    <weatherContext.Provider value={{data,getdata,mycity}}>
 
 {props.children}
     </weatherContext.Provider>
